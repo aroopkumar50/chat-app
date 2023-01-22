@@ -12,8 +12,19 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(publicDirectoryPath));
 
-io.on("connection", () => {
+io.on("connection", (socket) => {
     console.log("New WebSocket connection!");
+
+    socket.emit("message", "Welcome to the app!");
+    socket.broadcast.emit("message", "A new user has joined!");
+
+    socket.on("sendMessage", (message) => {
+        io.emit("message", message);
+    });
+
+    socket.on("disconnect", () => {
+        io.emit("message", "A user has left!");
+    });
 });
 
 server.listen(PORT, () => {

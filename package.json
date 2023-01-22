@@ -19,7 +19,8 @@
     },
     "homepage": "https://github.com/aroopkumar50/chat-app#readme",
     "dependencies": {
-        "express": "^4.18.2"
+        "express": "^4.18.2",
+        "socket.io": "^4.5.4"
     },
     "devDependencies": {
         "nodemon": "^2.0.20"
